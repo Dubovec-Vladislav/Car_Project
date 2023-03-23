@@ -110,7 +110,7 @@ h6 {
   font-weight: bold;
   font-style: normal;
 }
-.header__sublist-link li, .header__sublist-link, .header__link {
+.header__sub-link, .header__sublist-link, .header__link {
   -webkit-transition: ease 0.5s;
   transition: ease 0.5s;
 }
@@ -207,18 +207,14 @@ h6 {
   visibility: hidden;
   pointer-events: none;
 }
-.header__sublist-link li {
-  padding: 10px;
-}
-.header__sublist-link li:hover {
-  background-color: #C4C4C4;
-}
 .header__sub-link {
   display: block;
   color: #111111;
-  width: 100%;
-  padding: 5px 0;
+  padding: 15px;
   font-family: "Gilroy";
+}
+.header__sub-link:hover {
+  background-color: #C4C4C4;
 }
 
 .logo__title {

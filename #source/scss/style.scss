@@ -117,23 +117,18 @@ $color_4: #575757;
         visibility: hidden;
         pointer-events: none;
         @extend %tr;
-
-        li {
-            padding: 10px;
-            @extend %tr;
-
-            &:hover {
-                background-color: $color_3;
-            }
-        }
     }
 
     &__sub-link {
         display: block;
         color: $color_2;
-        width: 100%;
-        padding: 5px 0;
-        font-family: 'Gilroy'
+        padding: 15px;
+        font-family: 'Gilroy';
+        @extend %tr;
+
+        &:hover {
+            background-color: $color_3;
+        }
     }
 }
 
