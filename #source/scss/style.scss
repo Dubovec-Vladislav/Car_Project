@@ -6,6 +6,10 @@ $color_2: #111111;
 $color_3: #C4C4C4;
 $color_4: #575757;
 
+%tr {
+    transition: ease 0.5s;
+}
+
 body {
     &.lock {
         overflow: hidden;
@@ -74,7 +78,7 @@ body {
     &__list-link {
         display: flex;
         z-index: 2;
-        transition: ease 0.5s;
+        @extend %tr;
 
         >li {
             margin: 0px 0px 0px 16px;
@@ -123,7 +127,7 @@ body {
         font-size: 16px;
         font-weight: 700;
         border-radius: 10px;
-        transition: ease 0.5s;
+        @extend %tr;
 
         &:hover {
             background-color: $color_3;
@@ -147,7 +151,7 @@ body {
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
-        transition: ease 0.5s;
+        @extend %tr;
 
         @media (max-width:768px) {
             display: none;
@@ -159,7 +163,7 @@ body {
         color: $color_2;
         padding: 15px;
         font-family: 'Gilroy';
-        transition: ease 0.5s;
+        @extend %tr;
 
         &:hover {
             background-color: $color_3;
@@ -168,7 +172,7 @@ body {
 
     &__burger {
         display: none;
-        transition: ease 0.5s;
+        @extend %tr;
 
         @media (max-width:768px) {
             display: block;
@@ -176,17 +180,17 @@ body {
             width: 32px;
             height: 32px;
             z-index: 2;
+            cursor: pointer;
 
             span {
                 position: absolute;
                 background-color: $color_2;
                 width: 100%;
                 height: 3px;
-                top: 14px;
+                top: 15px;
                 left: 0;
                 transition: ease 0.5s;
                 border-radius: 50px;
-
             }
 
             &::before,
@@ -268,6 +272,9 @@ body {
     &__link {
         color: $color_1;
         padding: 12px 24px;
+        font-family: 'Gilroy';
+        font-size: 16px;
+        font-weight: 700;
         border: solid 1px $color_1;
         border-radius: 40px;
 
@@ -277,5 +284,129 @@ body {
             position: absolute;
             bottom: 0;
         }
+
+        &:hover {
+            color: #fff;
+            background-color: $color_1;
+        }
+    }
+}
+
+.body {
+
+    &__container {
+        display: flex;
+        position: relative;
+    }
+
+    &__content {
+        flex: 1 1 544px;
+        background-color: #000000;
+        padding: 70px 0px 0px 70px;
+    }
+
+    &__title {
+        color: #fff;
+        margin: 0px 0px 32px 0px;
+        font-family: 'Nekst-Black';
+        font-weight: 900;
+        font-size: 54px;
+        line-height: 90%;
+    }
+
+    &__description {
+        color: #fff;
+        margin: 0px 0px 24px 0px;
+        font-family: 'Nekst-Black';
+        font-weight: 900;
+        font-size: 30px;
+    }
+
+    &__link {
+        color: #fff;
+        background-color: $color_1;
+        display: inline-block;
+        @extend %tr;
+
+        &:hover {
+            color: $color_1;
+            background-color: #fff;
+        }
+    }
+
+    &__slider {
+        flex: 0 1 800px;
+        position: relative;
+
+        .swiper-pagination {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin: 0px 0px 44px 102px;
+        }
+
+        .swiper-pagination-bullet {
+            background-color: #fff;
+            width: 6px;
+            height: 6px;
+            margin: 0px 20px 0px 0px !important;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: #fff;
+            width: 12px;
+            height: 12px;
+        }
+
+        .body-button-prev,
+        .body-button-next {
+            position: absolute;
+            z-index: 1;
+            border: 2px solid lightgrey;
+            border-radius: 50%;
+        }
+
+        .body-button-prev {
+            width: 24px;
+            height: 24px;
+            top: 12px;
+            left: 0;
+        }
+
+        .body-button-next {
+            width: 48px;
+            height: 48px;
+            right: 0;
+        }
+
+        .body-button-prev::after {
+            opacity: 0.5;
+            width: 100%;
+            height: 100%;
+            content: url(../img/arrow-left.svg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .body-button-next::after {
+            width: 100%;
+            height: 100%;
+            content: url(../img/arrow-right.svg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+    }
+
+    &__navigation {
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        width: 88px;
+        height: 48px;
+        margin: 0px 44px 44px 0px;
     }
 }
