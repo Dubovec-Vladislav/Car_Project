@@ -5,12 +5,10 @@ $(document).ready(function () {
     });
 });
 
-
-
 let myCarSlider = new Swiper('.body__slider', {
     navigation: {
-        nextEl: '.body-button-next',
-        prevEl: '.body-button-prev',
+        nextEl: '.navigation__button-next',
+        prevEl: '.navigation__button-prev',
     },
 
     pagination: {
@@ -38,12 +36,68 @@ let myCarSlider = new Swiper('.body__slider', {
     // loop: true,
 });
 
-let mySliderAllSlides = document.querySelector('.body__slider-total');
-let mySliderCurrentSlide = document.querySelector('.body__slider-current');
+// Элементы формы
+const PriceInput = document.querySelector('#price-input');
+const PriceRange = document.querySelector('#price-range');
 
-mySliderAllSlides.innerHTML = myCarSlider.slides.length;
+const InitialPriceInput = document.querySelector('#initial-price-input');
+const InitialPriceRange = document.querySelector('#initial-price-range');
 
-myCarSlider.on('slideChange', function () {
-    let currentSlide = ++myCarSlider.realIndex;
-    mySliderCurrentSlide.innerHTML = currentSlide;
+const TimeInput = document.querySelector('#time-input');
+const TimeRange = document.querySelector('#time-range');
+
+const inputs = document.querySelectorAll('input');
+
+const totalProcentElement = document.querySelector('#total-procent');
+const totalPriceElement = document.querySelector('#total-price');
+const totalPriceMonthElement = document.querySelector('#total-price-month');
+
+// Связка range c тектовым полем
+PriceRange.addEventListener('input', function () {
+    PriceInput.value = PriceRange.value;
 });
+
+InitialPriceRange.addEventListener('input', function () {
+    InitialPriceInput.value = InitialPriceRange.value;
+});
+
+TimeRange.addEventListener('input', function () {
+    TimeInput.value = TimeRange.value;
+});
+
+// Связка текстового поля с range
+PriceInput.addEventListener('input', function () {
+    PriceRange.value = PriceInput.value;
+});
+
+InitialPriceInput.addEventListener('input', function () {
+    InitialPriceRange.value = InitialPriceInput.value;
+});
+
+TimeInput.addEventListener('input', function () {
+    TimeRange.value = TimeInput.value;
+});
+
+// Функция расчета стоимости
+function calculate() {
+    const formatter = new Intl.NumberFormat('ru');
+
+    let totalProcent = (Math.round(parseInt(InitialPriceInput.value) / parseInt(PriceInput.value) * 100) + '%');
+    totalProcentElement.innerText = totalProcent;
+
+    let totalPrice = (parseInt(PriceInput.value) - parseInt(InitialPriceInput.value)) * 2.6 / 100 * parseInt(TimeInput.value) ;
+    totalPriceElement.innerText = formatter.format(totalPrice);
+
+    let totalPriceMonth = parseInt(totalPrice) / parseInt(TimeInput.value);
+    totalPriceMonthElement.innerText = formatter.format(totalPriceMonth);
+}
+
+// Вызов функции расчета стоимости
+calculate();
+
+// Остлеживание всех инпутов на стрице
+for (const input of inputs) {
+    input.addEventListener('input', function () {
+        calculate(); // Когда изменятся хоть один инпут повторно вызвываетя функция
+    });
+};

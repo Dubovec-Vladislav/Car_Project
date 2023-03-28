@@ -75,10 +75,15 @@
                             </div>
 
                             <div class="body__navigation">
-                                <div class="body-button-next"></div>
-                                <div class="body-button-prev"></div>
+                                <div class="navigation__button-prev">
+                                    <div class="navigation__body"></div>
+                                    <!-- <div class="navigation__button-line">1</div> -->
+                                </div>
+                                <div class="navigation__button-next">
+                                    <div class="navigation__body"></div>
+                                    <div id="navigation-line" class="navigation__button-line"></div>
+                                </div>
                             </div>
-
                             <!-- If we need pagination -->
                             <div class="swiper-pagination"></div>
 
@@ -88,7 +93,74 @@
             </div>
         </div>
         <div class="main__page-calculator">
+            <div class="calculator__title">
+                Рассчитайте стоимость автомобиля в лизинг
+            </div>
+            <div class="calculator__content">
 
+                <form id="form">
+                    <div class="calculator__inputs">
+                        <div class="content__input-item">
+                            <div class="content__title">Стоимость автомобиля</div>
+                            <div class="content__input">
+                                <input id="price-input" class="input__number" type="number" min="1000000" max="5000000"
+                                    value="3000000" />
+                                <span class="input__description">₽</span>
+                                <div class="input__line-block">
+                                    <input id="price-range" class="input__line" type="range" min="1000000" max="5000000"
+                                        value="3000000" step="50000" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content__input-item">
+                            <div class="content__title">Первоначальный взнос</div>
+                            <div class="content__input">
+                                <input id="initial-price-input" class="input__number" type="number" min="100000"
+                                    max="5000000" value="450000" />
+                                <span id="total-procent" class="input__description input__procent">0</span>
+                                <div class="input__line-block">
+                                    <input id="initial-price-range" class="input__line" type="range" min="100000"
+                                        max="5000000" value="450000" step="10000" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content__input-item">
+                            <div class="content__title">Срок лизинга</div>
+                            <div class="content__input">
+                                <input id="time-input" class="input__number" type="number" min="12" max="84"
+                                    value="60" />
+                                <span class="input__description">мес.</span>
+                                <div class="input__line-block">
+                                    <input id="time-range" class="input__line" type="range" min="12" max="84"
+                                        value="60" step="1" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+                <div class="calculator__outputs">
+                    <div class="content__output-item">
+                        <div class="content__title">Сумма договора лизинга</div>
+                        <div class="content__output">
+                            <span id="total-price" class="output__number">0</span>
+                            <span class="output__description">₽</span>
+                        </div>
+                    </div>
+                    <div class="content__output-item">
+                        <div class="content__title">Ежемесячный платеж от</div>
+                        <div class="content__output">
+                            <span id="total-price-month" class="output__number">0</span>
+                            <span class="output__description">₽</span>
+                        </div>
+                    </div>
+                    <div class="content__output-item">
+                        <a href="#" class="calculator__link bid__link">Оставить заявку</a>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
