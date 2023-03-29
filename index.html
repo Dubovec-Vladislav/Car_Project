@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="libs_2/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="libs/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -75,15 +75,15 @@
                             </div>
 
                             <div class="body__navigation">
-                                <div class="navigation__button-prev">
-                                    <div class="navigation__body"></div>
-                                    <!-- <div class="navigation__button-line">1</div> -->
-                                </div>
+                                <div class="navigation__button-prev"></div>
                                 <div class="navigation__button-next">
-                                    <div class="navigation__body"></div>
-                                    <div id="navigation-line" class="navigation__button-line"></div>
+                                    <svg class="progress-ring">
+                                        <circle class="progress-ring__circle" stroke="white" stroke-width="6" cx="22.4"
+                                            cy="22.4" r="22.4" fill="transparent" />
+                                    </svg>
                                 </div>
                             </div>
+
                             <!-- If we need pagination -->
                             <div class="swiper-pagination"></div>
 
@@ -92,6 +92,7 @@
                 </div>
             </div>
         </div>
+        <!-- <input class="percent" type="number"> -->
         <div class="main__page-calculator">
             <div class="calculator__title">
                 Рассчитайте стоимость автомобиля в лизинг
@@ -103,12 +104,12 @@
                         <div class="content__input-item">
                             <div class="content__title">Стоимость автомобиля</div>
                             <div class="content__input">
-                                <input id="price-input" class="input__number" type="number" min="1000000" max="5000000"
-                                    value="3000000" />
+                                <input id="price-input" class="input__number" type="number" min="0" max="5000000"
+                                    value="3300000" />
                                 <span class="input__description">₽</span>
                                 <div class="input__line-block">
-                                    <input id="price-range" class="input__line" type="range" min="1000000" max="5000000"
-                                        value="3000000" step="50000" />
+                                    <input id="price-range" class="input__line" type="range" min="0" max="5000000"
+                                        value="3300000" step="50000" />
                                 </div>
                             </div>
                         </div>
@@ -116,11 +117,11 @@
                             <div class="content__title">Первоначальный взнос</div>
                             <div class="content__input">
                                 <input id="initial-price-input" class="input__number" type="number" min="100000"
-                                    max="5000000" value="450000" />
+                                    max="0" value="420000" />
                                 <span id="total-procent" class="input__description input__procent">0</span>
                                 <div class="input__line-block">
                                     <input id="initial-price-range" class="input__line" type="range" min="100000"
-                                        max="5000000" value="450000" step="10000" />
+                                        max="0" value="420000" step="10000" />
                                 </div>
                             </div>
                         </div>
@@ -131,8 +132,8 @@
                                     value="60" />
                                 <span class="input__description">мес.</span>
                                 <div class="input__line-block">
-                                    <input id="time-range" class="input__line" type="range" min="12" max="84"
-                                        value="60" step="1" />
+                                    <input id="time-range" class="input__line" type="range" min="12" max="84" value="60"
+                                        step="1" />
                                 </div>
                             </div>
                         </div>
@@ -165,7 +166,8 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
         integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
-    <script src="libs_2/swiper/swiper-bundle.min.js"></script>
+    <script src="libs/swiper/swiper-bundle.min.js"></script>
+    <script src="js/progress-bar.js"></script>
     <script src="js/script.js"></script>
 </body>
 

@@ -35,7 +35,38 @@ let myCarSlider = new Swiper('.body__slider', {
     speed: 600,
     // loop: true,
 });
+// -------------------------------------------------- //
 
+
+// -------------------------------------------------- //
+const circle = document.querySelector('.progress-ring__circle');
+const radius = circle.r.baseVal.value;
+const circumference = 2 * Math.PI * radius;
+const input = document.querySelector('.percent');
+
+const mySliderAllSlides = myCarSlider.slides.length;
+
+circle.style.strokeDasharray = `${circumference} ${circumference}`;
+circle.style.strokeDashoffset = circumference;
+circle.style.display = 'block';
+
+function setProgress(percent) {
+    const offset = circumference - percent / 100 * circumference;
+    circle.style.strokeDashoffset = offset;
+}
+
+let mySliderLineHeight = 1 / mySliderAllSlides * 100;
+setProgress(mySliderLineHeight);
+
+myCarSlider.on('slideChange', function () {
+    let mySliderCurrentSlide = ++myCarSlider.realIndex;
+    let mySliderLineHeight = mySliderCurrentSlide / mySliderAllSlides * 100;
+    setProgress(mySliderLineHeight);
+});
+// -------------------------------------------------- //
+
+
+// -------------------------------------------------- //
 // Элементы формы
 const PriceInput = document.querySelector('#price-input');
 const PriceRange = document.querySelector('#price-range');
@@ -80,16 +111,24 @@ TimeInput.addEventListener('input', function () {
 
 // Функция расчета стоимости
 function calculate() {
-    const formatter = new Intl.NumberFormat('ru');
-
-    let totalProcent = (Math.round(parseInt(InitialPriceInput.value) / parseInt(PriceInput.value) * 100) + '%');
+    let totalProcent = (Math.round(InitialPriceInput.value / PriceInput.value * 100) + '%');
     totalProcentElement.innerText = totalProcent;
 
-    let totalPrice = (parseInt(PriceInput.value) - parseInt(InitialPriceInput.value)) * 2.6 / 100 * parseInt(TimeInput.value) ;
-    totalPriceElement.innerText = formatter.format(totalPrice);
+    let minPrice = InitialPriceInput.value * 2;
+    let maxInitialPrice = PriceInput.value / 2;
 
-    let totalPriceMonth = parseInt(totalPrice) / parseInt(TimeInput.value);
-    totalPriceMonthElement.innerText = formatter.format(totalPriceMonth);
+    PriceRange['min'] = minPrice;
+    InitialPriceRange['max'] = maxInitialPrice;
+
+    let procent = TimeInput.value / 15;
+    if (procent < 4) {
+        procent = 4;
+    }
+    let totalPrice = Math.round((PriceInput.value - InitialPriceInput.value) * procent / 100 * TimeInput.value);
+    totalPriceElement.innerText = totalPrice;
+
+    let totalPriceMonth = totalPrice / TimeInput.value;
+    totalPriceMonthElement.innerText = Math.round(totalPriceMonth);
 }
 
 // Вызов функции расчета стоимости
