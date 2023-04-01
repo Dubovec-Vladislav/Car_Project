@@ -920,6 +920,22 @@ input[type=range]:focus::-ms-fill-upper {
   -webkit-box-shadow: 0 0 10px #FF9514;
           box-shadow: 0 0 10px #FF9514;
 }
+.popup .phone-lab {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.popup .phone-lab.active {
+  top: 17.5%;
+  font-size: 12px;
+}
+.popup .name-lab {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.popup .name-lab.active {
+  top: 17.5%;
+  font-size: 12px;
+}
 .popup__description {
   display: -webkit-box;
   display: -ms-flexbox;

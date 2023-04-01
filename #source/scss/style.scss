@@ -840,6 +840,24 @@ input[type=range]:focus::-ms-fill-upper {
 
     &__input-phone {}
 
+    .phone-lab {
+        transition: 0.5s;
+
+        &.active {
+            top: 17.5%;
+            font-size: 12px;
+        }
+    }
+
+    .name-lab {
+        transition: 0.5s;
+        
+        &.active {
+            top: 17.5%;
+            font-size: 12px;
+        }
+    }
+
     &__input-name {}
 
     &__description {

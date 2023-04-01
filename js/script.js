@@ -13,6 +13,12 @@ $(document).ready(function () {
         $('.popup__body').toggleClass('active');
         $('body').toggleClass('lock');
     });
+    $('.phone-inp').on('focus' ,function (event) {
+        $('.phone-lab').addClass('active');
+    });
+    $('.name-inp').on('focus' ,function (event) {
+        $('.name-lab').addClass('active');
+    });
 });
 
 let myCarSlider = new Swiper('.body__slider', {
