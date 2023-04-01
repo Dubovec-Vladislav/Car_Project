@@ -278,6 +278,7 @@ body {
         font-weight: 700;
         border: solid 1px $color_1;
         border-radius: 40px;
+        cursor: pointer;
 
         @media (max-width:768px) {
             background-color: $color_1;
@@ -396,7 +397,7 @@ body {
             opacity: 0.5;
             cursor: pointer;
             position: relative;
-            z-index: 3;
+            z-index: 2;
         }
     }
 
@@ -413,7 +414,7 @@ body {
             left: 18px;
             cursor: pointer;
             position: absolute;
-            z-index: 3;
+            z-index: 2;
         }
     }
 }
@@ -458,14 +459,12 @@ body {
         background-color: $color_1;
         color: #fff;
         width: 100%;
-
         height: 68px;
         justify-content: center;
         align-items: center;
 
         font-weight: 900;
         font-size: 30px;
-        line-height: 120%;
         @extend %tr;
 
         &:hover {
@@ -660,4 +659,248 @@ input[type=range]:focus::-ms-fill-lower {
 
 input[type=range]:focus::-ms-fill-upper {
     background: #FF9514;
+}
+
+.popup {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    opacity: 0;
+    visibility: hidden;
+    transition: ease 0.8s;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        background-color: #fff;
+        width: 100%;
+        height: 77.5%;
+        bottom: 0;
+        left: 0;
+    }
+
+    &__close {
+        position: absolute;
+        background-color: $color_5;
+        width: 48px;
+        height: 48px;
+        top: 0;
+        right: 0;
+        margin: 48px 15px 0px 0px;
+        border-radius: 50%;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 23px;
+            left: 12px;
+            background-color: #828282;
+            width: 24px;
+            height: 2px;
+            transform: rotate(45deg);
+            border-radius: 5px;
+
+            @keyframes bef {
+                0% {
+                    transform: rotate(45deg);
+                }
+
+                50% {
+                    transform: rotate(32.5deg);
+                }
+
+                100% {
+                    transform: rotate(45deg);
+                }
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 23px;
+            left: 12px;
+            background-color: #828282;
+            width: 24px;
+            height: 2px;
+            transform: rotate(-45deg);
+            border-radius: 5px;
+
+            @keyframes aft {
+                0% {
+                    transform: rotate(-45deg);
+                }
+
+                50% {
+                    transform: rotate(-32.5deg);
+                }
+
+                100% {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+
+        &:hover::before {
+            animation: bef cubic-bezier(0.165, 0.84, 0.44, 1) 2s;
+        }
+
+        &:hover::after {
+            animation: aft cubic-bezier(0.165, 0.84, 0.44, 1) 2s;
+        }
+    }
+
+    &__body {
+        position: absolute;
+        max-width: 685px;
+        height: 77.5%;
+        bottom: 0;
+        left: 50%;
+        padding: 48px 15px 0px 15px;
+        border-radius: 32px 32px 0px 0px;
+        opacity: 0;
+        transition: ease 0.8s;
+        transform: translate(-50%, 100%);
+
+        &.active {
+            opacity: 1;
+            transform: translate(-50%, 0px);
+        }
+    }
+
+    &__title {
+        color: $color_2;
+        margin: 0px 0px 24px 0px;
+        font-family: 'Nekst-Black';
+        font-size: 54px;
+        font-weight: 900;
+    }
+
+    &__subtitle {
+        color: $color_4;
+        margin: 0px 0px 44px 0px;
+        font-family: 'Gilroy';
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 150%;
+    }
+
+    &__content {
+        display: flex;
+    }
+
+    &__input {
+        position: relative;
+        width: 312px;
+        height: 48px;
+        margin: 0px 32px 32px 0px;
+
+        &:last-child {
+            margin: 0px 0px 32px 0px;
+        }
+
+        label {
+            position: absolute;
+            color: $color_4;
+            top: 50%;
+            left: 24px;
+            transform: translate(0px, -50%);
+            font-family: 'Gilroy';
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        input {
+            background-color: #F3F3F4;
+            color: $color_4;
+            width: 100%;
+            height: 100%;
+            padding: 0px 0px 0px 24px;
+            border-radius: 16px;
+
+            font-family: 'Gilroy';
+            font-size: 16px;
+            font-weight: 700;
+            transition: ease 0.5s;
+
+            &:focus {
+                box-shadow: 0 0 10px $color_1;
+            }
+        }
+    }
+
+    &__input-phone {}
+
+    &__input-name {}
+
+    &__description {
+        display: flex;
+        margin: 0px 0px 32px 0px;
+        border: 2px solid #F3F3F4;
+        border-radius: 16px;
+        padding: 30px 25px;
+    }
+
+    &__description-text {
+        color: rgba(17, 17, 17, 0.5);
+        font-family: 'Gilroy';
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 150%;
+
+        span {
+            color: $color_2;
+        }
+    }
+
+    &__link {
+        flex-shrink: 0;
+        background-color: $color_1;
+        color: #fff;
+        transition: ease 0.5s;
+
+        &:hover {
+            background-color: #fff;
+            color: $color_1;
+        }
+    }
+
+    &__footer {
+        text-align: center;
+    }
+
+    &__footer-item {
+        display: inline-block;
+        width: 48px;
+        height: 48px;
+        border: 2px solid #E7E7E7;
+        border-radius: 50%;
+        transition: ease 0.5s;
+
+        a {
+            position: relative;
+            color: #575757;
+            padding: 8px;
+            font-size: 30px;
+            transition: ease 0.5s;
+        }
+
+        &:hover {
+            background-color: #575757;
+
+            a {
+                color: #fff;
+            }
+
+        }
+    }
 }

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/icons-font.css">
     <link rel="stylesheet" href="libs/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -36,12 +37,14 @@
                                 </li>
                                 <li><a href="#" class="header__link">Каталог</a></li>
                                 <li><a href="#" class="header__link">О нас</a></li>
-                                <li><a href="#" class="header__link bid__link">Оставить заявку</a></li>
+                                <li>
+                                    <div href="#" class="header__link bid__link">Оставить заявку</div>
+                                </li>
                             </ul>
-                            <div class="header__burger">
-                                <span></span>
-                            </div>
                         </nav>
+                        <div class="header__burger">
+                            <span></span>
+                        </div>
                     </div>
                 </div>
                 <div class="main__page-body">
@@ -53,7 +56,7 @@
                             <div class="body__description">
                                 Получите машину за 5 дней
                             </div>
-                            <a href="#" class="body__link bid__link">Оставить заявку</a>
+                            <div class="body__link bid__link">Оставить заявку</div>
                         </div>
                         <div class="body__slider swiper">
                             <div class="swiper-wrapper">
@@ -90,84 +93,117 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- <input class="percent" type="number"> -->
-        <div class="main__page-calculator">
-            <div class="calculator__title">
-                Рассчитайте стоимость автомобиля в лизинг
-            </div>
-            <div class="calculator__content">
+                <div class="main__page-calculator">
+                    <div class="calculator__title">
+                        Рассчитайте стоимость автомобиля в лизинг
+                    </div>
+                    <div class="calculator__content">
 
-                <form id="form">
-                    <div class="calculator__inputs">
-                        <div class="content__input-item">
-                            <div class="content__title">Стоимость автомобиля</div>
-                            <div class="content__input">
-                                <input id="price-input" class="input__number" type="number" min="0" max="5000000"
-                                    value="3300000" />
-                                <span class="input__description">₽</span>
-                                <div class="input__line-block">
-                                    <input id="price-range" class="input__line" type="range" min="0" max="5000000"
-                                        value="3300000" step="50000" />
+                        <form id="form">
+                            <div class="calculator__inputs">
+                                <div class="content__input-item">
+                                    <div class="content__title">Стоимость автомобиля</div>
+                                    <div class="content__input">
+                                        <input id="price-input" class="input__number" type="number" min="0"
+                                            max="5000000" value="3300000">
+                                        <span class="input__description">₽</span>
+                                        <div class="input__line-block">
+                                            <input id="price-range" class="input__line" type="range" min="0"
+                                                max="5000000" value="3300000" step="50000">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content__input-item">
+                                    <div class="content__title">Первоначальный взнос</div>
+                                    <div class="content__input">
+                                        <input id="initial-price-input" class="input__number" type="number" min="100000"
+                                            max="0" value="420000">
+                                        <span id="total-procent" class="input__description input__procent">0</span>
+                                        <div class="input__line-block">
+                                            <input id="initial-price-range" class="input__line" type="range"
+                                                min="100000" max="0" value="420000" step="10000">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content__input-item">
+                                    <div class="content__title">Срок лизинга</div>
+                                    <div class="content__input">
+                                        <input id="time-input" class="input__number" type="number" min="12" max="84"
+                                            value="60">
+                                        <span class="input__description">мес.</span>
+                                        <div class="input__line-block">
+                                            <input id="time-range" class="input__line" type="range" min="12" max="84"
+                                                value="60" step="1">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+                        <div class="calculator__outputs">
+                            <div class="content__output-item">
+                                <div class="content__title">Сумма договора лизинга</div>
+                                <div class="content__output">
+                                    <span id="total-price" class="output__number">0</span>
+                                    <span class="output__description">₽</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="content__input-item">
-                            <div class="content__title">Первоначальный взнос</div>
-                            <div class="content__input">
-                                <input id="initial-price-input" class="input__number" type="number" min="100000"
-                                    max="0" value="420000" />
-                                <span id="total-procent" class="input__description input__procent">0</span>
-                                <div class="input__line-block">
-                                    <input id="initial-price-range" class="input__line" type="range" min="100000"
-                                        max="0" value="420000" step="10000" />
+                            <div class="content__output-item">
+                                <div class="content__title">Ежемесячный платеж от</div>
+                                <div class="content__output">
+                                    <span id="total-price-month" class="output__number">0</span>
+                                    <span class="output__description">₽</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="content__input-item">
-                            <div class="content__title">Срок лизинга</div>
-                            <div class="content__input">
-                                <input id="time-input" class="input__number" type="number" min="12" max="84"
-                                    value="60" />
-                                <span class="input__description">мес.</span>
-                                <div class="input__line-block">
-                                    <input id="time-range" class="input__line" type="range" min="12" max="84" value="60"
-                                        step="1" />
-                                </div>
+                            <div class="content__output-item">
+                                <div class="calculator__link bid__link">Оставить заявку</div>
                             </div>
                         </div>
 
-                    </div>
-                </form>
-
-                <div class="calculator__outputs">
-                    <div class="content__output-item">
-                        <div class="content__title">Сумма договора лизинга</div>
-                        <div class="content__output">
-                            <span id="total-price" class="output__number">0</span>
-                            <span class="output__description">₽</span>
-                        </div>
-                    </div>
-                    <div class="content__output-item">
-                        <div class="content__title">Ежемесячный платеж от</div>
-                        <div class="content__output">
-                            <span id="total-price-month" class="output__number">0</span>
-                            <span class="output__description">₽</span>
-                        </div>
-                    </div>
-                    <div class="content__output-item">
-                        <a href="#" class="calculator__link bid__link">Оставить заявку</a>
                     </div>
                 </div>
-
+            </div>
+        </div>
+        <div id="popup" class="popup">
+            <div class="popup__body">
+                <div class="popup__close"></div>
+                <div class="popup__title">Онлайн-заявка</div>
+                <div class="popup__subtitle">Заполните форму, и мы вскоре свяжемся с вами, чтобы ответить на все вопросы
+                </div>
+                <div class="popup__content">
+                    <div class="popup__input popup__input-phone">
+                        <label>Телефон</label>
+                        <input class="phone" type="text">
+                    </div>
+                    <div class="popup__input popup__input-name">
+                        <label>Имя</label>
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="popup__description">
+                    <div class="popup__description-text">
+                        Нажимая на кнопку «Оставить заявку», я даю согласие <span>на обработку персональных
+                            данных</span>
+                    </div>
+                    <div class="popup__link bid__link">Оставить заявку</div>
+                </div>
+                <div class="popup__footer">
+                    <div class="popup__footer-item">
+                        <a href="/" class="fa-brands fa-telegram"></a>
+                    </div>
+                    <div class="popup__footer-item">
+                        <a href="/" class="fa-brands fa-whatsapp"></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <script src="https://unpkg.com/imask"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
         integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
     <script src="libs/swiper/swiper-bundle.min.js"></script>
-    <script src="js/progress-bar.js"></script>
+    <script src="js/mask.js"></script>
     <script src="js/script.js"></script>
 </body>
 

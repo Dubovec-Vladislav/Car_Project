@@ -1,7 +1,17 @@
 $(document).ready(function () {
     $('.header__burger').click(function (event) {
         $('.header__burger,.header__list-link').toggleClass('active');
-        $('body').toggleClass('lock')
+        $('body').toggleClass('lock');
+    });
+    $('.bid__link').click(function (event) {
+        $('.popup').toggleClass('active');
+        $('.popup__body').toggleClass('active');
+        $('body').toggleClass('lock');
+    });
+    $('.popup__close').click(function (event) {
+        $('.popup').toggleClass('active');
+        $('.popup__body').toggleClass('active');
+        $('body').toggleClass('lock');
     });
 });
 
@@ -114,17 +124,15 @@ function calculate() {
     let totalProcent = (Math.round(InitialPriceInput.value / PriceInput.value * 100) + '%');
     totalProcentElement.innerText = totalProcent;
 
-    let minPrice = InitialPriceInput.value * 2;
-    let maxInitialPrice = PriceInput.value / 2;
+    let minPrice = parseInt(InitialPriceInput.value) * 2;
+    let maxInitialPrice = parseInt(PriceInput.value) / 2;
+    console.log(maxInitialPrice);
 
     PriceRange['min'] = minPrice;
     InitialPriceRange['max'] = maxInitialPrice;
 
     let procent = TimeInput.value / 15;
-    if (procent < 4) {
-        procent = 4;
-    }
-    let totalPrice = Math.round((PriceInput.value - InitialPriceInput.value) * procent / 100 * TimeInput.value);
+    let totalPrice = Math.round((PriceInput.value  - InitialPriceInput.value) * procent / 100 * TimeInput.value);
     totalPriceElement.innerText = totalPrice;
 
     let totalPriceMonth = totalPrice / TimeInput.value;
